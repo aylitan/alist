@@ -1,0 +1,57 @@
+
+模板 Snapic Page 2022 使用文档，详见 http://www.lopwon.com/snapic-page-2022.html
+
+插件 for Snapic Page 选择性使用，作用是，当使用模板 Snapic Page 2022 创建了多个单页相册后，可以使用插件 for Snapic Page 将这些相册在指定位置归档显示，使用方法见下：
+
+A 部署插件
+-------
+1. 将压缩包里的文件夹 forSnapicPage 及其内部的所有文件，上传至目录 usr/plugins 中。
+2. 后台》控制台》插件，找到 for Snapic Page 并启用。
+
+B 调用插件
+-------
+示例一：在文章页 post.php 的（全局）调用，即所有文章页都会显示。打开主题文章文件 post.php 在合适位置（如：文末）添加以下代码：
+<?php Typecho_Plugin::factory('for_SnapicPage')->Lopwon(); ?>
+
+示例二：在文章页 post.php 的指定（单篇）文章调用，即只有指定的一篇文章显示。打开主题文章文件 post.php 在合适位置（如：文末）添加以下代码：
+<?php if ($this->cid == '文章cid编码') { Typecho_Plugin::factory('for_SnapicPage')->Lopwon(); } ?>
+
+示例三：在文章页 post.php 的指定（多篇）文章调用，即限定哪些文章显示。打开主题文章文件 post.php 在合适位置（如：文末）添加以下代码：
+<?php if (in_array($this->cid, array('文章cid编码一', '文章cid编码二', '以此类推'))) { Typecho_Plugin::factory('for_SnapicPage')->Lopwon(); } ?>
+
+-------
+注意：请把以上代码中（文章cid编码*）替换为你要调用插件的页面 cid
+
+[
+  {
+    "name": "默认分类",
+    "icon": "tabler:user-circle",
+    "url": "https://aylitan.fun/index.php/category/15/",
+    "newTab": false
+  },
+  {
+    "name": "归档",
+    "icon": "tabler:archive",
+    "url": "https://aylitan.fun/index.php/category/14/",
+    "newTab": false
+  },
+  {
+    "name": "书签栏",
+    "icon": "tabler:cloud-data-connection",
+    "url": "https://aylitan.fun/index.php/24.html",
+    "newTab": false
+  },
+  {
+    "name": "相册",
+    "icon": "tabler:arrows-random",
+    "url": "https://aylitan.fun/admin",
+    "newTab": false
+  }
+
+  {
+    "name": "后台",
+    "icon": "tabler:arrows-random",
+    "url": "https://aylitan.fun/admin",
+    "newTab": false
+  }
+]
